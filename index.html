@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="一个简单易用的在线图片压缩工具，支持PNG、JPG格式">
+    <meta name="keywords" content="图片压缩,在线工具,image compression">
+    <meta name="author" content="Your Name">
+    <link rel="icon" type="image/svg+xml" href="upload-icon.svg">
     <title>图片压缩工具</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -58,5 +62,17 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <link rel="preload" href="upload-icon.svg" as="image">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('ServiceWorker 注册成功');
+                })
+                .catch(error => {
+                    console.log('ServiceWorker 注册失败:', error);
+                });
+        }
+    </script>
 </body>
 </html> 
