@@ -3,76 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="一个简单易用的在线图片压缩工具，支持PNG、JPG格式">
-    <meta name="keywords" content="图片压缩,在线工具,image compression">
-    <meta name="author" content="Your Name">
-    <link rel="icon" type="image/svg+xml" href="upload-icon.svg">
     <title>图片压缩工具</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <!-- 头部标题 -->
         <header>
             <h1>图片压缩工具</h1>
-            <p>简单、快速地压缩您的图片</p>
+            <p>简单快捷的在线图片压缩服务</p>
         </header>
-
-        <!-- 上传区域 -->
-        <div class="upload-area" id="uploadArea">
-            <input type="file" id="imageInput" accept="image/png, image/jpeg" hidden>
+        
+        <div class="upload-area" id="dropZone">
             <div class="upload-box">
                 <img src="upload-icon.svg" alt="上传图标" class="upload-icon">
                 <p>点击或拖拽图片到这里</p>
-                <p class="support-text">支持 PNG、JPG 格式</p>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
             </div>
         </div>
 
-        <!-- 压缩控制区域 -->
-        <div class="compression-controls" id="compressionControls" style="display: none;">
+        <div class="compression-controls">
             <div class="quality-control">
-                <label for="quality">压缩质量：</label>
-                <input type="range" id="quality" min="1" max="100" value="80">
+                <span>压缩质量：</span>
+                <input type="range" id="qualitySlider" min="0" max="100" value="80">
                 <span id="qualityValue">80%</span>
             </div>
         </div>
 
-        <!-- 预览区域 -->
-        <div class="preview-container" id="previewContainer" style="display: none;">
+        <div class="preview-container">
             <div class="preview-box">
-                <h3>原始图片</h3>
+                <h3>原图</h3>
+                <div class="file-info" id="originalInfo"></div>
                 <div class="image-preview">
-                    <img id="originalPreview" alt="原始图片预览">
-                </div>
-                <div class="file-info">
-                    <span id="originalSize"></span>
+                    <img id="originalImage" alt="原图预览">
                 </div>
             </div>
-            
             <div class="preview-box">
                 <h3>压缩后</h3>
+                <div class="file-info" id="compressedInfo"></div>
                 <div class="image-preview">
-                    <img id="compressedPreview" alt="压缩后预览">
+                    <img id="compressedImage" alt="压缩后预览">
                 </div>
-                <div class="file-info">
-                    <span id="compressedSize"></span>
-                </div>
-                <button id="downloadBtn" class="download-btn">下载压缩图片</button>
+                <button class="download-btn" id="downloadBtn">下载压缩后的图片</button>
             </div>
         </div>
     </div>
     <script src="script.js"></script>
-    <link rel="preload" href="upload-icon.svg" as="image">
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-                .then(registration => {
-                    console.log('ServiceWorker 注册成功');
-                })
-                .catch(error => {
-                    console.log('ServiceWorker 注册失败:', error);
-                });
-        }
-    </script>
 </body>
 </html> 
